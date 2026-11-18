@@ -205,6 +205,10 @@ protected:
     }
 
 public:
+    void closeMenu() {
+        this->onClose(nullptr);
+    }
+
     static FakeMenu* create() {
         auto ret = new FakeMenu();
         if (ret->init()) {
@@ -225,7 +229,7 @@ class $modify(FakeKeyboard, CCKeyboardDispatcher) {
             // Don't hijack K while the player is typing in a text box.
             if (!CCIMEDispatcher::sharedDispatcher()->hasDelegate()) {
                 if (auto existing = CCDirector::get()->getRunningScene()->getChildByID("fake-mod-menu"_spr)) {
-                    static_cast<FakeMenu*>(existing)->onClose(nullptr);
+                    static_cast<FakeMenu*>(existing)->closeMenu();
                 } else if (auto menu = FakeMenu::create()) {
                     menu->setID("fake-mod-menu"_spr);
                     menu->show();
