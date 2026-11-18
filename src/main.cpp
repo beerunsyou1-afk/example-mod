@@ -5,7 +5,7 @@
 // to RobTop's servers, nobody else can see it, and it does not actually
 // rate/feature anything.
 //
-// Written for Geode v4.x / GD 2.2074. If your SDK version differs, see the
+// Written for Geode v5.x / GD 2.2081. If your SDK version differs, see the
 // notes in README.md (the keyboard hook signature is the most likely thing
 // to need a tweak).
 
@@ -48,7 +48,7 @@ namespace fake {
 // ---------------------------------------------------------------------------
 // The popup menu
 // ---------------------------------------------------------------------------
-class FakeMenu : public Popup<> {
+class FakeMenu : public Popup {
 protected:
     CCLabelBMFont* m_starsLabel = nullptr;
     CCLabelBMFont* m_badgeLabel = nullptr;
@@ -91,7 +91,8 @@ protected:
 
     CCMenu* m_menu = nullptr;
 
-    bool setup() override {
+    bool init() {
+        if (!Popup::init(300.f, 270.f)) return false;
         this->setTitle("Fake Mod Menu");
 
         m_menu = CCMenu::create();
@@ -206,7 +207,7 @@ protected:
 public:
     static FakeMenu* create() {
         auto ret = new FakeMenu();
-        if (ret->initAnchored(300.f, 270.f)) {
+        if (ret->init()) {
             ret->autorelease();
             return ret;
         }
