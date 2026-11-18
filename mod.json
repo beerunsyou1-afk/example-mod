@@ -6,9 +6,9 @@
     "mac": "2.2081",
     "ios": "2.2081"
   },
-  "id": "yourname.fake-mod-menu",
+  "id": "vzdb.fake-mod-menu",
   "name": "Fake Mod Menu",
   "version": "v1.0.0",
-  "developer": "YourName",
+  "developer": "vzdb",
   "description": "Press K for a mod menu!"
 }
